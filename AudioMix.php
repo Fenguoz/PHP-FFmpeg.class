@@ -88,7 +88,7 @@ class AudioMix
 
         $this->filter_complex = " -filter_complex \"" . $this->filter_complex . "  [a{$v}][a{$m}]amix=inputs=2[a]\"";
         $this->end = " -map 0:v -map \"[a]\" -c:v copy -c:a aac -t {$this->duration} -shortest -strict -2";
-        $this->output = " output.mp4;";
+        $this->output = " {$this->output};";
         return $this->start . $this->filter_complex . $this->end . $this->output;
     }
 
@@ -104,7 +104,7 @@ class AudioMix
         $this->_imgs();
 
         $this->end = " -c:v libx264 -t {$this->duration} -strict -2";
-        $this->output = " output.mp4;";
+        $this->output = " {$this->output};";
         return $this->start . $this->end . $this->output;
     }
 
